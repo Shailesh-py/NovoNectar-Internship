@@ -1,0 +1,26 @@
+from nltk.chat.util import Chat, reflections
+
+# Define a list of pairs (patterns and responses)
+pairs = [
+    (r'Hi|Hello|Hey', ['Hello!', 'Hi there!']),
+    (r'What is your name?', ['I am a chatbot created using NLTK.']),
+    (r'How are you?', ['I am good, thank you!']),
+    (r'(.*)', ['Sorry, I did not understand that.'])
+]
+# Create a chatbot instance
+chatbot = Chat(pairs, reflections)
+
+
+# Function to start the chat
+def chat():
+    print("Hello! I'm a chatbot. Type 'quit' to exit.")
+    while True:
+        user_input = input("You: ")
+        if user_input.lower() == 'quit':
+            break
+        response = chatbot.respond(user_input)
+        print(f"Chatbot: {response}")
+
+
+# Start chatting
+chat()
